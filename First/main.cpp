@@ -41,7 +41,10 @@ void calculate(int *sms, float *outcalls) {
     total += ((int)*outcalls-20)*2;
     if (*outcalls-(int)*outcalls>0)
         total+=2;
-    cout << total << endl;
+    if (total < 0)
+        cout << 0 << endl;
+    else
+        cout << total <<endl;
 }
 
 void feel_data(string *str, float *outcalls, int *sms, string *my_number) {
