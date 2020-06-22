@@ -14,11 +14,9 @@ init_str = doc.tables[1].rows[0].cells[0].text
 doc.tables[1].rows[0].cells[0].text = str(init_str[:7] + str(randint(0, 1000)) + " " +
                                           init_str[11:14] + " " + format(now.day, '02d') + "\t" +
                                           str(str(Months(now.month).name)) + "\t" + str(now.year) + "г.")
-print(doc.tables[1].rows[0].cells[0].text)
 init_str = doc.tables[2].rows[2].cells[1].text
 doc.tables[2].rows[2].cells[1].text = str(init_str[:1] + " " + str(randint(0, 100)) + " " + init_str[3: 6] +
                                           format(now.day, '02d') + "." + format(now.month, '02d') + "." + str(now.year))
-print(doc.tables[2].rows[2].cells[1].text)
 
 doc.tables[3].rows[1].cells[4].text = mobyli_bill
 doc.tables[3].rows[1].cells[5].text = mobyli_bill
@@ -38,15 +36,5 @@ doc.tables[4].rows[4].cells[1].text = str(num2words(int(float(mobyli_bill) + flo
                                            + choose + format(int(100*(float(mobyli_bill) + float(Enet_bill)))%100, '02d')
                                           + " копеек" + init_str[14:])
 
-table = doc.tables[4]
-row = table.rows[0]
-cell = row.cells[0]
-for y in range(len(table.rows)):
-    for x in range(len(table.rows[y].cells)):
-        print(table.rows[y].cells[x].text + "\t\t\t\t\t\t\t\t\t" + str(y) + "\t" + str(x))
-
-
-print(doc.tables[4].rows[4].cells[1].text)
-cell = doc.tables[4].rows[4].cells[1]
 doc.save("321.docx")
 os.system("abiword --to=pdf 321.docx")
